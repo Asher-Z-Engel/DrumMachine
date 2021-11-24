@@ -1,15 +1,8 @@
 body {
+  height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: aqua;
 }
 
-div#drum-machine {
-  width: 600px;
-  height: 400px;
-  background-color: burlywood;
-  border:2px solid coral;
-  border-radius: 20px;
-  margin: auto;
-}
