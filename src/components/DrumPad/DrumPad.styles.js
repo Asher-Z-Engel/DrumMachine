@@ -1,12 +1,12 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  height: 50px;
+  height: 80px;
   width: 100px;
-  background-color: #82968c;
+  background-color: ${props => (props.isPadActive ? '#ffe66d' : '#82968c')};
   border: 2px solid #60495a;
   border-radius: 10px;
-  box-shadow: 3px 3px 5px rgba(0,0,0,0.3);
+  box-shadow: 3px 3px 5px rgba(0,0,0,0.5);
 
   :active {
     background-color: #ffe66d;

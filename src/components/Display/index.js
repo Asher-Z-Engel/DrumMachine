@@ -1,12 +1,10 @@
 import React from "react";
-import { Wrapper, Content } from "./Display.styles";
+import { Wrapper, Text } from "./Display.styles";
 
-const Display = () => {
+const Display = ({text}) => {
   return (
     <Wrapper id="display">
-      <Content>
-
-      </Content>
+      <Text>{text}</Text>
     </Wrapper>
   )
 }
