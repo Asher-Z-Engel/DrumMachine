@@ -1,4 +1,4 @@
-import React, {useEffect, useRef} from "react";
+import React, {useEffect, useState, useRef} from "react";
 // Styles
 import { Wrapper, Content } from "./DrumPad.styles";
 
@@ -6,12 +6,11 @@ import { Wrapper, Content } from "./DrumPad.styles";
 const DrumPad = ({ sound, letter, id, clickFunction }) => {
   const Pad = useRef(null);
   const Audio = useRef(null);
+  const [isActive, setIsActive] = useState(false);
 
-  const playAudio = (event) => {
-    // console.dir(event.target)
-    // event.target.classList.add("drum-pad-active");
-    // setTimeout(() => { event.target.classList.remove("drum-pad-active") }, 1000)
-    Pad.current.classList.add("drum-pad-active");
+  const playAudio = () => {
+    setIsActive(true);
+    setTimeout(() => { setIsActive(false) }, 100)
     Audio.current.play();
   }
 
@@ -20,8 +19,8 @@ const DrumPad = ({ sound, letter, id, clickFunction }) => {
   }, [])
 
   return (
-    <Wrapper id={id} className={`drum-pad ${letter}`} onClick={clickFunction} ref={Pad}>
-      <Content>
+    <Wrapper isActive={isActive} id={id} className={`drum-pad ${letter}`} onClick={clickFunction} ref={Pad}>
+      <Content isActive={isActive}>
         {letter}
       </Content>
       <audio className="clip" ref={Audio} id={letter} src={sound}></audio>
