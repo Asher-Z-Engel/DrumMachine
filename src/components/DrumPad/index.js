@@ -1,9 +1,9 @@
 import React, {useEffect, useState, useRef} from "react";
 // Styles
-import { Wrapper, Content } from "./DrumPad.styles";
+import { Wrapper } from "./DrumPad.styles";
 
 
-const DrumPad = ({ sound, letter, id, clickFunction }) => {
+const DrumPad = ({ sound, letter, id, clickFunction, isOn }) => {
   const Pad = useRef(null);
   const Audio = useRef(null);
   const [isActive, setIsActive] = useState(false);
@@ -19,10 +19,8 @@ const DrumPad = ({ sound, letter, id, clickFunction }) => {
   }, [])
 
   return (
-    <Wrapper isActive={isActive} id={id} className={`drum-pad ${letter}`} onClick={clickFunction} ref={Pad}>
-      <Content isActive={isActive}>
-        {letter}
-      </Content>
+    <Wrapper isActive={isActive} id={id} isOn={isOn} className={`drum-pad ${letter}`} onClick={clickFunction} ref={Pad}>
+      {letter}
       <audio className="clip" ref={Audio} id={letter} src={sound}></audio>
     </Wrapper>
   )

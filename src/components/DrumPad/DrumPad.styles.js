@@ -10,10 +10,8 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-`;
-
-export const Content = styled.div`
-  text-align: center;
+  pointer-events: ${props => (props.isOn ? 'auto' : 'none')};
+  cursor: ${props => (props.isOn ? 'pointer' : 'none')};
   font-weight: 300;
   font-size: 30px;
   text-shadow: ${props => (props.isActive ? 'none' : '3px 3px 5px rgba(0,0,0,0.5)')};
