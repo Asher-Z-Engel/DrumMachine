@@ -16,6 +16,7 @@ const DrumPad = ({ sound, letter, id, clickFunction, isOn, volume }) => {
   const playAudio = () => {
     setIsActive(true);
     setTimeout(() => { setIsActive(false) }, 100)
+    Audio.current.volume = Volume.current;
     Audio.current.play();
   }
 
