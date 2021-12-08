@@ -22,6 +22,7 @@ const drumPadLetters = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
 function App() {
   const [displayText, setDisplayText] = useState('');
   const [isOn, setIsOn] = useState(true);
+  const [volume, setVolume] = useState(0.5)
 
 
   const handlePadActivation = (event) => {
@@ -52,17 +53,17 @@ function App() {
         <PowerButton isOn={isOn} onClick={ handlePowerButton }/>
         <Display text={displayText} />
         <div className="drum-pads">
-          <DrumPad id="Kick" letter="Q" sound={Kick} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Snare" letter="W" sound={Snare} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Snare-Rim" letter="E" sound={SnareRim} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Hi-Tom" letter="A" sound={HiTom} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Mid-Tom" letter="S" sound={MidTom} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Floor-Tom" letter="D" sound={LowTom} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Closed-Hats" letter="Z" sound={ClosedHH} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Open-Hats" letter="X" sound={OpenHH} isOn={isOn} clickFunction={handlePadActivation} />
-          <DrumPad id="Crash" letter="C" sound={Crash} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Kick" letter="Q" sound={Kick} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Snare" letter="W" sound={Snare} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Snare-Rim" letter="E" sound={SnareRim} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Hi-Tom" letter="A" sound={HiTom} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Mid-Tom" letter="S" sound={MidTom} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Floor-Tom" letter="D" sound={LowTom} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Closed-Hats" letter="Z" sound={ClosedHH} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Open-Hats" letter="X" sound={OpenHH} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
+          <DrumPad id="Crash" letter="C" sound={Crash} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
         </div>
-        <Slider />
+        <Slider onChange={e => setVolume(e.target.value)} />
       </DrumMachine>
     </>
   );
