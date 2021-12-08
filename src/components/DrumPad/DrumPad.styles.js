@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.button`
   height: 80px;
   width: 100px;
   background-color: ${props => (props.isActive ? '#ffe66d' : '#82968c')};

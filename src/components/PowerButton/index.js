@@ -5,7 +5,7 @@ import { Wrapper } from "./PowerButton.styles";
 const PowerButton = ({isOn, onClick}) => {
   return (
     <Wrapper isOn={isOn} onClick={onClick}>
-      <i class="fas fa-power-off"></i>
+      <i className="fas fa-power-off"></i>
     </Wrapper>
   )
 }

@@ -5,6 +5,7 @@ import DrumMachine from './components/DrumMachine';
 import Display from './components/Display';
 import DrumPad from './components/DrumPad';
 import PowerButton from './components/PowerButton';
+import Slider from './components/Slider';
 // Audio
 import Kick from './audio/CYCdh_K1close_Kick-04.wav';
 import Snare from './audio/CYCdh_K1close_Rim-07.wav';
@@ -27,17 +28,10 @@ function App() {
     setDisplayText(event.target.id)
   }
 
-  // const Pad = useRef(null);
-
   const handleKeyDown = (event) => {
     const padLetter = event.key.toUpperCase();
     if (drumPadLetters.includes(padLetter)) {
-      const activePad = document.querySelector(`div.${padLetter}`);
-      // if (Pad.current.isOn) {
-      //   console.log(padLetter);
-      // }
-      // console.dir(activePad)
-      // console.log(isOn);
+      const activePad = document.querySelector(`button.${padLetter}`);
       activePad.click();
     }
   }
@@ -68,6 +62,7 @@ function App() {
           <DrumPad id="Open-Hats" letter="X" sound={OpenHH} isOn={isOn} clickFunction={handlePadActivation} />
           <DrumPad id="Crash" letter="C" sound={Crash} isOn={isOn} clickFunction={handlePadActivation} />
         </div>
+        <Slider />
       </DrumMachine>
     </>
   );
