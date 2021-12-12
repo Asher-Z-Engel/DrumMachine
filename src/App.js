@@ -90,12 +90,15 @@ function App() {
     if (selection === "Acoustic") {
       setKitSounds(acousticKit.sounds);
       setKitNames(acousticKit.names);
+      setDisplayText("Acoustic");
     } else if (selection === "Electro") {
       setKitSounds(electroKit.sounds);
       setKitNames(electroKit.names);
+      setDisplayText("Electro");
     } else if (selection === "Percussion") {
       setKitSounds(percussionKit.sounds);
       setKitNames(percussionKit.names);
+      setDisplayText("Percussion");
     }
   }
 
