@@ -3,7 +3,7 @@ import React, {useEffect, useState, useRef } from "react";
 import { Button } from "./DrumPad.styles";
 
 
-const DrumPad = ({ sound, letter, id, clickFunction, isOn, volume }) => {
+const DrumPad = ({ sound, letter, id, clickFunction, isOn, volume, color }) => {
   const Pad = useRef(null);
   const Audio = useRef(null);
   const Volume = useRef(volume)
@@ -26,7 +26,7 @@ const DrumPad = ({ sound, letter, id, clickFunction, isOn, volume }) => {
   }, [])
 
   return (
-      <Button isActive={isActive} id={id} isOn={isOn} className={`drum-pad ${letter}`} onClick={clickFunction} ref={Pad} disabled={!isOn}>
+      <Button isActive={isActive} id={id} isOn={isOn} className={`drum-pad ${letter}`} onClick={clickFunction} ref={Pad} disabled={!isOn} color={color}>
         {letter}
         <audio className="clip" ref={Audio} id={letter} src={sound} ></audio>
       </Button>
