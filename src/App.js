@@ -36,22 +36,22 @@ import Tambo from './audio/perc-tambo.mp3';
 import Tribal from './audio/perc-tribal.mp3';
 import Weird from './audio/perc-weirdo.mp3';
 
-
-const drumPadLetters = ["Q", "W", "E", "A", "S", "D", "Z", "X", "C"];
-
 const acousticKit = {
   sounds: [Kick, Snare, SnareRim, HiTom, MidTom, LowTom, ClosedHH, OpenHH, Crash],
-  names: ["Kick", "Snare", "Snare-Rim", "Hi-Tom", "Mid-Tom", "Low-Tom", "Closed-Hats", "Open-Hats", "Crash"]
+  names: ["Kick", "Snare", "Snare-Rim", "Hi-Tom", "Mid-Tom", "Low-Tom", "Closed-Hats", "Open-Hats", "Crash"],
+  color: {default: "#00cae0", secondary: "#00818f"}
 };
   
 const electroKit = {
   sounds: [EKick, ESnare1, ESnare2, ETom, EShaker, EClap, EClosedHH, EOpenHH, ECrash],
-  names: ["Kick", "Snare", "Snare-Rim", "Tom", "Shaker", "Clap", "Closed-Hats", "Open-Hats", "Crash"]
+  names: ["Kick", "Snare", "Snare-Rim", "Tom", "Shaker", "Clap", "Closed-Hats", "Open-Hats", "Crash"],
+  color: {default: "#19ff19", secondary: "#00cc00"}
 };
 
 const percussionKit = {
   sounds: [Click, Chirp, Hollow, Metal, Nasty, Short, Tambo, Tribal, Weird],
-  names: ["Click", "Chirp", "Hollow", "Metal", "Nasty", "Short", "Tambo", "Tribal", "Weird"]
+  names: ["Click", "Chirp", "Hollow", "Metal", "Nasty", "Short", "Tambo", "Tribal", "Weird"],
+  color: {default: "#c2aebc", secondary: "#9f7f95"}
 }
 
 function App() {
@@ -68,8 +68,8 @@ function App() {
 
   const handleKeyDown = (event) => {
     const padLetter = event.key.toUpperCase();
-    if (drumPadLetters.includes(padLetter)) {
-      const activePad = document.querySelector(`button.${padLetter}`);
+    const activePad = document.querySelector(`.${padLetter}`);
+    if (activePad) {
       activePad.click();
     }
   }
@@ -85,8 +85,8 @@ function App() {
   }, []);
 
   const handleKitSelection = (e) => {
-    console.log(e.target.value);
-    const selection = e.target.value;
+    
+      const selection = e.target.value;
     if (selection === "Acoustic") {
       setKitSounds(acousticKit.sounds);
       setKitNames(acousticKit.names);
@@ -99,7 +99,8 @@ function App() {
       setKitSounds(percussionKit.sounds);
       setKitNames(percussionKit.names);
       setDisplayText("Percussion");
-    }
+      }
+    
   }
 
   return (
@@ -120,9 +121,10 @@ function App() {
           <DrumPad id={kitNames[8]} letter="C" sound={kitSounds[8]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} />
         </div>
         <fieldset className="kit-selectors" name="kit" onChange={handleKitSelection}>
-          <KitSelector name="kit" kitName="Acoustic" />
-          <KitSelector name="kit" kitName="Electro" />
-          <KitSelector name="kit" kitName="Percussion" />
+          <legend>Kit</legend>
+          <KitSelector name="kit" kitName="Acoustic" isOn={isOn} color={acousticKit.color}/>
+          <KitSelector name="kit" kitName="Electro" isOn={isOn} color={electroKit.color}/>
+          <KitSelector name="kit" kitName="Percussion" isOn={isOn} color={percussionKit.color}/>
         </fieldset>
       </DrumMachine>
     </>

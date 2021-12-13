@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Button = styled.button`
+export const Button = styled.fieldset`
   height: 80px;
   width: 100px;
   background-color: ${props => (props.isActive ? '#ffe66d' : '#82968c')};

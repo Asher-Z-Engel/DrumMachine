@@ -24,6 +24,20 @@ body {
 }
 
 .kit-selectors {
+  height: 150px;
   grid-column: 3/4;
   grid-row: 2/3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  margin: 0 20px 10px 20px;
+  border: 2px solid #454a48;
+  border-radius: 10px;
+  color: #454a48;
+
+}
+
+input {
+  outline: none;
 }
