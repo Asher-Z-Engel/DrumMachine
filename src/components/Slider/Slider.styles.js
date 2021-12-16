@@ -9,10 +9,6 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-
-  & input {
-    
-  }
 `;
 
 export const RangeSlider = styled.input`
@@ -20,6 +16,13 @@ export const RangeSlider = styled.input`
   -webkit-appearance: none;
   background: transparent;
   width: 250px;
+
+  &:disabled {
+    &::-webkit-slider-thumb,
+    ::-webkit-slider-runnable-track {
+      cursor: default;
+    }
+  }
 
   &::-webkit-slider-thumb {
     -webkit-appearance: none;

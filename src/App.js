@@ -1,5 +1,5 @@
 import './App.css';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef, useLayoutEffect } from 'react';
 // Components
 import DrumMachine from './components/DrumMachine';
 import Display from './components/Display';
@@ -62,8 +62,8 @@ function App() {
   const [volume, setVolume] = useState(0.5)
   const [kitSounds, setKitSounds] = useState(acousticKit.sounds);
   const [kitNames, setKitNames] = useState(acousticKit.names);
-  const [padColor, setPadColor] = useState(acousticKit.color)
-
+  const [padColor, setPadColor] = useState(acousticKit.color);
+  const [loading, setLoading] = useState(false);
 
   const handlePadActivation = (event) => {
     setDisplayText(event.target.id)
@@ -77,11 +77,15 @@ function App() {
     }
   }
 
-  const handlePowerButton = () => setIsOn(prev => !prev);
+  const handlePowerButton = () => {
+    if (!loading) setIsOn(prev => !prev);
+  }
 
   useEffect(() => {
     setDisplayText(isOn ? 'Welcome!' : 'Goodbye!');
-    setTimeout(() => {setDisplayText('')}, 1000)
+    setTimeout(() => { setDisplayText('') }, 4000);
+    setLoading(true);
+    setTimeout(() => setLoading(false), 4000);
   }, [isOn])
 
   useEffect(() => {
@@ -90,7 +94,7 @@ function App() {
 
   const handleKitSelection = (e) => {
     
-      const selection = e.target.value;
+    const selection = e.target.value;
     if (selection === "Acoustic") {
       setKitSounds(acousticKit.sounds);
       setKitNames(acousticKit.names);
@@ -106,16 +110,28 @@ function App() {
       setKitNames(percussionKit.names);
       setDisplayText("Percussion");
       setPadColor(percussionKit.color);
-      }
-    
+    }
   }
+
+  const handleVolumeChange = (e) => {
+    setVolume(e.target.value);
+  }
+
+  const firstUpdate = useRef(true);
+  useLayoutEffect(() => {
+    if (firstUpdate.current) {
+      firstUpdate.current = false;
+      return
+    }
+    setDisplayText(`Volume: ${Math.floor(volume * 100)}`);
+  }, [volume])
 
   return (
     <>
       <DrumMachine>
         <PowerButton isOn={isOn} onClick={ handlePowerButton }/>
-        <Display text={displayText} />
-        <Slider onChange={e => setVolume(e.target.value)} />
+        <Display text={displayText} isOn={isOn}/>
+        <Slider onChange={handleVolumeChange} isOn={isOn}/>
         <div className="drum-pads">
           <DrumPad id={kitNames[0]} letter="Q" sound={kitSounds[0]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
           <DrumPad id={kitNames[1]} letter="W" sound={kitSounds[1]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
