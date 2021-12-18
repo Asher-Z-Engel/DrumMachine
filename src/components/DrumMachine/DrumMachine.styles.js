@@ -10,4 +10,5 @@ margin: auto;
 display: grid;
 grid-template-columns: 1fr 320px 1.5fr;
 grid-template-rows: 1fr 2fr;
+opacity: ${props => props.loading || !props.isOn ? '.7' : '1'}
 `;

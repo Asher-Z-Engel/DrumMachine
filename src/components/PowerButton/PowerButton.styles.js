@@ -14,4 +14,26 @@ justify-content: center;
 font-size: 30px;
 color: ${props => (props.isOn ? '#00a5b8' : '#454a48')};
 box-shadow: ${props => (props.isOn ? '0 0 20px #47edff' : 'none')};
+
+&.loading {
+  border: 5px solid #eee;
+  border-top: 5px solid #353535;
+  animation: spin .8s linear infinite;
+  background: #6a706e;
+  box-shadow: none;
+  cursor: default;
+
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+
+  & i {
+    display: none;
+  }
+}
 `;

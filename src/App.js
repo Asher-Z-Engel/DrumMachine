@@ -128,20 +128,20 @@ function App() {
 
   return (
     <>
-      <DrumMachine>
-        <PowerButton isOn={isOn} onClick={ handlePowerButton }/>
+      <DrumMachine loading={loading} isOn={isOn}>
+        <PowerButton isOn={isOn} onClick={handlePowerButton} loading={loading}/>
         <Display text={displayText} isOn={isOn}/>
         <Slider onChange={handleVolumeChange} isOn={isOn}/>
         <div className="drum-pads">
-          <DrumPad id={kitNames[0]} letter="Q" sound={kitSounds[0]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[1]} letter="W" sound={kitSounds[1]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[2]} letter="E" sound={kitSounds[2]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[3]} letter="A" sound={kitSounds[3]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[4]} letter="S" sound={kitSounds[4]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[5]} letter="D" sound={kitSounds[5]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[6]} letter="Z" sound={kitSounds[6]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[7]} letter="X" sound={kitSounds[7]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
-          <DrumPad id={kitNames[8]} letter="C" sound={kitSounds[8]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor}/>
+          <DrumPad id={kitNames[0]} letter="Q" sound={kitSounds[0]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[1]} letter="W" sound={kitSounds[1]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[2]} letter="E" sound={kitSounds[2]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[3]} letter="A" sound={kitSounds[3]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[4]} letter="S" sound={kitSounds[4]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[5]} letter="D" sound={kitSounds[5]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[6]} letter="Z" sound={kitSounds[6]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[7]} letter="X" sound={kitSounds[7]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
+          <DrumPad id={kitNames[8]} letter="C" sound={kitSounds[8]} volume={volume} isOn={isOn} clickFunction={handlePadActivation} color={padColor} loading={loading}/>
         </div>
         <fieldset className="kit-selectors" name="kit" onChange={handleKitSelection}>
           <legend>Kit</legend>

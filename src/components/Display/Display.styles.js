@@ -5,14 +5,20 @@ const expandAsLineAndGrow = keyframes`
     transform: scale(.1, .1);
     background: black;
   }
-  70% {
+  35% {
     transform: scale(1, .1);
     background: transparent;
   }
   
-  to {
+  50% {
     transform: scale(1, 1);
-}
+  }
+  90% {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
 `;
 
 export const Wrapper = styled.div`
@@ -32,10 +38,10 @@ export const Text = styled.h1`
   font-weight: 300;
   
   &.turningOn {
-    animation: ${expandAsLineAndGrow} 2s;
+    animation: ${expandAsLineAndGrow} 4s;
   }
   &.turningOff {
-    animation: ${expandAsLineAndGrow} 2s 2s reverse;
+    animation: ${expandAsLineAndGrow} 4s reverse;
   }
 `;
 
