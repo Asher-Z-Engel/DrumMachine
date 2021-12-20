@@ -13,7 +13,7 @@ align-items: center;
 justify-content: center;
 font-size: 30px;
 color: ${props => (props.isOn ? '#00a5b8' : '#454a48')};
-box-shadow: ${props => (props.isOn ? '0 0 20px #47edff' : 'none')};
+box-shadow: ${props => (props.isOn ? '0 0 20px 7px #47edff' : 'none')};
 
 &.loading {
   border: 5px solid #eee;

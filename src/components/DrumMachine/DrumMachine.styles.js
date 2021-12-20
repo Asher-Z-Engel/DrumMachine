@@ -9,6 +9,6 @@ border-radius: 20px;
 margin: auto;
 display: grid;
 grid-template-columns: 1fr 320px 1.5fr;
-grid-template-rows: 1fr 2fr;
+grid-template-rows: 1fr 1fr 3fr;
 opacity: ${props => props.loading || !props.isOn ? '.7' : '1'}
 `;

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
-export const Button = styled.fieldset`
+export const Button = styled.button`
+  appearance: none;
   height: 80px;
   width: 100px;
   background-color: ${props => (props.isActive ? '#ffe66d' : '#82968c')};
@@ -15,8 +16,11 @@ export const Button = styled.fieldset`
   font-weight: 300;
   font-size: 30px;
   text-shadow: ${props => (props.isActive ? 'none' : '3px 3px 5px rgba(0,0,0,0.5)')};
-  
+  outline: none;
   opacity: ${props => (props.isActive ? ".8" : "1")};
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
 
   &:disabled {
     text-shadow: none;
